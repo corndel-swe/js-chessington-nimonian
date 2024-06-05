@@ -4,4 +4,4 @@
 const counterInstance = null
 
 // Please don't change the lines below!
-export { Counter, counterInstance }
+export default { Counter, counterInstance }

@@ -11,27 +11,27 @@ describe('Rook', () => {
 
   it('can move laterally', () => {
     const rook = new Rook(Player.WHITE)
-    board.setPiece(Square.at(1, 2), rook)
+    board.setPiece(new Square(1, 2), rook)
 
     const moves = rook.getAvailableMoves(board)
 
     const expectedMoves = [
       // Horizontal
-      Square.at(1, 0),
-      Square.at(1, 1),
-      Square.at(1, 3),
-      Square.at(1, 4),
-      Square.at(1, 5),
-      Square.at(1, 6),
-      Square.at(1, 7),
+      new Square(1, 0),
+      new Square(1, 1),
+      new Square(1, 3),
+      new Square(1, 4),
+      new Square(1, 5),
+      new Square(1, 6),
+      new Square(1, 7),
       // Vertical
-      Square.at(0, 2),
-      Square.at(2, 2),
-      Square.at(3, 2),
-      Square.at(4, 2),
-      Square.at(5, 2),
-      Square.at(6, 2),
-      Square.at(7, 2),
+      new Square(0, 2),
+      new Square(2, 2),
+      new Square(3, 2),
+      new Square(4, 2),
+      new Square(5, 2),
+      new Square(6, 2),
+      new Square(7, 2)
     ]
 
     assert.deepEqual(new Set(moves), new Set(expectedMoves))
@@ -39,7 +39,7 @@ describe('Rook', () => {
 
   it('cannot make any other moves', () => {
     const rook = new Rook(Player.WHITE)
-    board.setPiece(Square.at(1, 2), rook)
+    board.setPiece(new Square(1, 2), rook)
 
     const moves = rook.getAvailableMoves(board)
 
@@ -49,13 +49,13 @@ describe('Rook', () => {
   xit('cannot move through friendly pieces', () => {
     const rook = new Rook(Player.WHITE)
     const friendlyPiece = new Pawn(Player.WHITE)
-    board.setPiece(Square.at(4, 4), rook)
-    board.setPiece(Square.at(4, 6), friendlyPiece)
+    board.setPiece(new Square(4, 4), rook)
+    board.setPiece(new Square(4, 6), friendlyPiece)
 
     const moves = rook.getAvailableMoves(board)
 
     assert(
-      !moves.some((square) => equare.equals(Square.at(4, 7))),
+      !moves.some(square => equare.equals(new Square(4, 7))),
       '`moves` contains the square (4, 7)'
     )
   })
@@ -63,13 +63,13 @@ describe('Rook', () => {
   xit('cannot move through opposing pieces', () => {
     const rook = new Rook(Player.WHITE)
     const opposingPiece = new Pawn(Player.BLACK)
-    board.setPiece(Square.at(4, 4), rook)
-    board.setPiece(Square.at(4, 6), opposingPiece)
+    board.setPiece(new Square(4, 4), rook)
+    board.setPiece(new Square(4, 6), opposingPiece)
 
     const moves = rook.getAvailableMoves(board)
 
     assert(
-      !moves.some((square) => square.equals(Square.at(4, 7))),
+      !moves.some(square => square.equals(new Square(4, 7))),
       '`moves` contains the square (4, 7)'
     )
   })
@@ -77,13 +77,13 @@ describe('Rook', () => {
   xit('can take opposing pieces', () => {
     const rook = new Rook(Player.WHITE)
     const opposingPiece = new Pawn(Player.BLACK)
-    board.setPiece(Square.at(4, 4), rook)
-    board.setPiece(Square.at(4, 6), opposingPiece)
+    board.setPiece(new Square(4, 4), rook)
+    board.setPiece(new Square(4, 6), opposingPiece)
 
     const moves = rook.getAvailableMoves(board)
 
     assert(
-      moves.some((square) => square.equals(Square.at(4, 6))),
+      moves.some(square => square.equals(new Square(4, 6))),
       '`moves` does not contain the square (4, 6)'
     )
   })
@@ -91,13 +91,13 @@ describe('Rook', () => {
   xit('cannot take the opposing king', () => {
     const rook = new Rook(Player.WHITE)
     const opposingKing = new King(Player.BLACK)
-    board.setPiece(Square.at(4, 4), rook)
-    board.setPiece(Square.at(4, 6), opposingKing)
+    board.setPiece(new Square(4, 4), rook)
+    board.setPiece(new Square(4, 6), opposingKing)
 
     const moves = rook.getAvailableMoves(board)
 
     assert(
-      !moves.some((square) => square.equals(Square.at(4, 6))),
+      !moves.some(square => square.equals(new Square(4, 6))),
       '`moves` contains the square (4, 6)'
     )
   })
@@ -105,13 +105,13 @@ describe('Rook', () => {
   xit('cannot take friendly pieces', () => {
     const rook = new Rook(Player.WHITE)
     const friendlyPiece = new Pawn(Player.WHITE)
-    board.setPiece(Square.at(4, 4), rook)
-    board.setPiece(Square.at(4, 6), friendlyPiece)
+    board.setPiece(new Square(4, 4), rook)
+    board.setPiece(new Square(4, 6), friendlyPiece)
 
     const moves = rook.getAvailableMoves(board)
 
     assert(
-      !moves.some((square) => square.equals(Square.at(4, 6))),
+      !moves.some(square => square.equals(new Square(4, 6))),
       '`moves` contains the square (4, 6)'
     )
   })

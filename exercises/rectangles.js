@@ -24,12 +24,10 @@ export class Rectangle {
   }
 }
 
-// Exercise 2: Make Square a child class of Rectangle
 export class Square {
   #side
 
   constructor(side) {
-    super(side, side)
     this.#side = side
   }
 

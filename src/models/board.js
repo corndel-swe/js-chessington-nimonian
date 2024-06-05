@@ -28,7 +28,7 @@ export default class Board {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[row].length; col++) {
         if (this.board[row][col] === pieceToFind) {
-          return Square.at(row, col)
+          return new Square(row, col)
         }
       }
     }

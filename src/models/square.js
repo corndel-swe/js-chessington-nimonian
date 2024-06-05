@@ -4,10 +4,6 @@ export default class Square {
     this.col = col
   }
 
-  static at(row, col) {
-    return new Square(row, col)
-  }
-
   equals(otherSquare) {
     return (
       !!otherSquare &&
