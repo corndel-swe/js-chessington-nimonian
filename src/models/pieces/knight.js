@@ -1,17 +1,35 @@
 import Square from '../square.js'
 import Piece from './piece.js'
 
-export default class Knight {
+class Knight extends Piece {
   constructor(player) {
-    this.player = player
+    super(player)
   }
 
   getAvailableMoves(board) {
-    return []
-  }
+    const loc = board.findPiece(this)
+    const moves = []
 
-  moveTo(board, newSquare) {
-    const currentSquare = board.findPiece(this)
-    board.movePiece(currentSquare, newSquare)
+    const dirs = [
+      { dr: 2, dc: 1 },
+      { dr: 2, dc: -1 },
+      { dr: -2, dc: 1 },
+      { dr: -2, dc: -1 },
+      { dr: 1, dc: 2 },
+      { dr: -1, dc: 2 },
+      { dr: 1, dc: -2 },
+      { dr: -1, dc: -2 }
+    ]
+
+    for (let { dr, dc } of dirs) {
+      const candidate = new Square(loc.row + dr, loc.col + dc)
+      if (board.contains(candidate)) {
+        moves.push(candidate)
+      }
+    }
+
+    return moves
   }
 }
+
+export default Knight

@@ -24,26 +24,8 @@ export class Rectangle {
   }
 }
 
-export class Square {
-  #side
-
+export class Square extends Rectangle {
   constructor(side) {
-    this.#side = side
-  }
-
-  area() {
-    return this.#side * this.#side
-  }
-
-  perimeter() {
-    return 4 * this.#side
-  }
-
-  width() {
-    return this.#side
-  }
-
-  height() {
-    return this.#side
+    super(side, side)
   }
 }
