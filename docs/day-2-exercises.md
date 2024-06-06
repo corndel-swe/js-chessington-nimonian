@@ -45,7 +45,7 @@ from_ `Rectangle`.
 
 - [ ] Do we need `#side` anymore if we're using `#width` and `#height`?
 
-## Method overriding
+## Exercise 3: Method overriding
 
 Sometimes, it's not as easy to figure out _one_ way to do something that works
 for every subclass. Finding the area for a square and a rectangle may be similar
