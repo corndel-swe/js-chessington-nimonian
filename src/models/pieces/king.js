@@ -1,3 +1,4 @@
+import Square from '../square.js'
 import Piece from './piece.js'
 
 export default class King {
@@ -6,7 +7,24 @@ export default class King {
   }
 
   getAvailableMoves(board) {
-    return []
+    const loc = board.findPiece(this)
+    const moves = []
+    const dirs = [
+      { dr: 1, dc: 0 },
+      { dr: 0, dc: 1 },
+      { dr: -1, dc: 0 },
+      { dr: 0, dc: -1 },
+      { dr: 1, dc: 1 },
+      { dr: 1, dc: -1 },
+      { dr: -1, dc: 1 },
+      { dr: -1, dc: -1 }
+    ]
+
+    for (let dir of dirs) {
+      moves.push(new Square(loc.row + dir.dr, loc.col + dir.dc))
+    }
+
+    return moves
   }
 
   moveTo(board, newSquare) {
