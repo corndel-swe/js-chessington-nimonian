@@ -9,6 +9,7 @@ export default class King {
   getAvailableMoves(board) {
     const loc = board.findPiece(this)
     const moves = []
+
     const dirs = [
       { dr: 1, dc: 0 },
       { dr: 0, dc: 1 },
@@ -20,8 +21,8 @@ export default class King {
       { dr: -1, dc: -1 }
     ]
 
-    for (let dir of dirs) {
-      moves.push(new Square(loc.row + dir.dr, loc.col + dir.dc))
+    for (let { dr, dc } of dirs) {
+      moves.push(new Square(loc.row + dr, loc.col + dc))
     }
 
     return moves

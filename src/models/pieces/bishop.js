@@ -9,6 +9,7 @@ export default class Bishop {
   getAvailableMoves(board) {
     const loc = board.findPiece(this)
     const moves = []
+
     const dirs = [
       { dr: 1, dc: 1 },
       { dr: 1, dc: -1 },
@@ -16,11 +17,11 @@ export default class Bishop {
       { dr: -1, dc: -1 }
     ]
 
-    for (let dir of dirs) {
-      let candidate = new Square(loc.row + dir.dr, loc.col + dir.dc)
+    for (let { dr, dc } of dirs) {
+      let candidate = new Square(loc.row + dr, loc.col + dc)
       while (board.contains(candidate)) {
         moves.push(candidate)
-        candidate = new Square(candidate.row + dir.dr, candidate.col + dir.dc)
+        candidate = new Square(candidate.row + dr, candidate.col + dc)
       }
     }
 
