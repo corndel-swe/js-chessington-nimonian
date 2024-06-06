@@ -33,6 +33,14 @@ Welcome to Chessington! A world of OOP board game adventures...
 
    and visit `http://localhost:5173` to see Chessington in your browser.
 
+> [!TIP]
+>
+> When you run the web server, your terminal will be stuck in a process, meaning
+> you can't use it! You can always open a new one and leave the web server
+> running - it is normal to have several terminals open.
+>
+> To stop the server, hit `ctrl + C` on your keyboard.
+
 ## Exercises
 
 The exercises for each day are in the `docs` folder:

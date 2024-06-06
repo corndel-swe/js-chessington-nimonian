@@ -1,3 +1,4 @@
+import { strict as assert } from 'assert'
 import Bishop from '../../../src/models/pieces/bishop.js'
 import Pawn from '../../../src/models/pieces/pawn.js'
 import King from '../../../src/models/pieces/king.js'
