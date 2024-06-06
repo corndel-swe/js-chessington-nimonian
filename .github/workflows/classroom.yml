@@ -1,0 +1,50 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Day 1 Exercise 1
+      id: day-1-exercise-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Day 1 Exercise 1
+        setup-command: npm install
+        command: npm run test:d1e1
+        timeout: 1
+        max-score: 1
+    - name: Day 1 Exercise 2
+      id: day-1-exercise-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Day 1 Exercise 2
+        setup-command: npm install
+        command: npm run test:d1e2
+        timeout: 1
+        max-score: 1
+    - name: Day 1 Exercise 3
+      id: day-1-exercise-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Day 1 Exercise 3
+        setup-command: npm install
+        command: npm run test:d1e3
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        DAY-1-EXERCISE-1_RESULTS: "${{steps.day-1-exercise-1.outputs.result}}"
+        DAY-1-EXERCISE-2_RESULTS: "${{steps.day-1-exercise-2.outputs.result}}"
+        DAY-1-EXERCISE-3_RESULTS: "${{steps.day-1-exercise-3.outputs.result}}"
+      with:
+        runners: day-1-exercise-1,day-1-exercise-2,day-1-exercise-3
