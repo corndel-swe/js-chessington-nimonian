@@ -2,8 +2,9 @@ import Square from '../square.js'
 import Player from '../player.js'
 import Piece from './piece.js'
 
-export default class Pawn {
+class Pawn extends Piece {
   constructor(player) {
+    super()
     this.player = player
   }
 
@@ -34,9 +35,6 @@ export default class Pawn {
 
     return moves
   }
-
-  moveTo(board, newSquare) {
-    const currentSquare = board.findPiece(this)
-    board.movePiece(currentSquare, newSquare)
-  }
 }
+
+export default Pawn

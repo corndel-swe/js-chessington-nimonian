@@ -1,9 +1,9 @@
 import Square from '../square.js'
 import Piece from './piece.js'
 
-export default class King {
+class King extends Piece {
   constructor(player) {
-    this.player = player
+    super(player)
   }
 
   getAvailableMoves(board) {
@@ -22,14 +22,14 @@ export default class King {
     ]
 
     for (let { dr, dc } of dirs) {
-      moves.push(new Square(loc.row + dr, loc.col + dc))
+      const candidate = new Square(loc.row + dr, loc.col + dc)
+      if (board.contains(candidate)) {
+        moves.push(candidate)
+      }
     }
 
     return moves
   }
-
-  moveTo(board, newSquare) {
-    const currentSquare = board.findPiece(this)
-    board.movePiece(currentSquare, newSquare)
-  }
 }
+
+export default King
