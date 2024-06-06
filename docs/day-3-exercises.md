@@ -49,7 +49,7 @@ correct value:
 
 - [ ] Run your test with `npm run test:rectangles` in your terminal.
 
-## Test Driven Development
+## Test-Driven Development
 
 So far, we've been writing tests for code that already exists. This is a good
 way to make sure that our code works as expected.
