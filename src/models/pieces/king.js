@@ -23,9 +23,16 @@ class King extends Piece {
 
     for (let { dr, dc } of dirs) {
       const candidate = new Square(loc.row + dr, loc.col + dc)
-      if (board.contains(candidate)) {
-        moves.push(candidate)
+
+      if (!board.contains(candidate)) continue
+
+      const capturable = board.getPiece(candidate)
+
+      if (capturable?.player === this.player || capturable instanceof King) {
+        continue
       }
+
+      moves.push(candidate)
     }
 
     return moves
