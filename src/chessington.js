@@ -19,7 +19,7 @@ function squareToPositionString(square) {
 
 function positionStringToSquare(positionString) {
   const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-  return Square.at(
+  return new Square(
     parseInt(positionString.charAt(1), 10) - 1,
     letters.indexOf(positionString.charAt(0))
   )
@@ -47,7 +47,7 @@ function boardToPositionObject() {
   let position = {}
   for (let row = 0; row < GameSettings.BOARD_SIZE; row++) {
     for (let col = 0; col < GameSettings.BOARD_SIZE; col++) {
-      const square = Square.at(row, col)
+      const square = new Square(row, col)
       const piece = board.getPiece(square)
 
       if (piece) {
@@ -90,7 +90,7 @@ function onDrop(source, target) {
   if (
     !pieceToMove
       ?.getAvailableMoves(board)
-      .some((square) => square.equals(toSquare))
+      .some(square => square.equals(toSquare))
   ) {
     return 'snapback'
   }
@@ -107,30 +107,30 @@ function boardInStartingPosition() {
   let board = new Board()
 
   for (let i = 0; i < GameSettings.BOARD_SIZE; i++) {
-    board.setPiece(Square.at(1, i), new Pawn(Player.WHITE))
-    board.setPiece(Square.at(6, i), new Pawn(Player.BLACK))
+    board.setPiece(new Square(1, i), new Pawn(Player.WHITE))
+    board.setPiece(new Square(6, i), new Pawn(Player.BLACK))
   }
 
   for (let i of [0, 7]) {
-    board.setPiece(Square.at(0, i), new Rook(Player.WHITE))
-    board.setPiece(Square.at(7, i), new Rook(Player.BLACK))
+    board.setPiece(new Square(0, i), new Rook(Player.WHITE))
+    board.setPiece(new Square(7, i), new Rook(Player.BLACK))
   }
 
   for (let i of [1, 6]) {
-    board.setPiece(Square.at(0, i), new Knight(Player.WHITE))
-    board.setPiece(Square.at(7, i), new Knight(Player.BLACK))
+    board.setPiece(new Square(0, i), new Knight(Player.WHITE))
+    board.setPiece(new Square(7, i), new Knight(Player.BLACK))
   }
 
   for (let i of [2, 5]) {
-    board.setPiece(Square.at(0, i), new Bishop(Player.WHITE))
-    board.setPiece(Square.at(7, i), new Bishop(Player.BLACK))
+    board.setPiece(new Square(0, i), new Bishop(Player.WHITE))
+    board.setPiece(new Square(7, i), new Bishop(Player.BLACK))
   }
 
-  board.setPiece(Square.at(0, 3), new Queen(Player.WHITE))
-  board.setPiece(Square.at(7, 3), new Queen(Player.BLACK))
+  board.setPiece(new Square(0, 3), new Queen(Player.WHITE))
+  board.setPiece(new Square(7, 3), new Queen(Player.BLACK))
 
-  board.setPiece(Square.at(0, 4), new King(Player.WHITE))
-  board.setPiece(Square.at(7, 4), new King(Player.BLACK))
+  board.setPiece(new Square(0, 4), new King(Player.WHITE))
+  board.setPiece(new Square(7, 4), new King(Player.BLACK))
 
   return board
 }
@@ -142,11 +142,11 @@ function createChessBoard() {
     draggable: true,
     position: boardToPositionObject(board),
     onDragStart,
-    onDrop,
+    onDrop
   })
   updateStatus()
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', event => {
   createChessBoard()
 })

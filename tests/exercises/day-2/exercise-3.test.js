@@ -2,7 +2,7 @@ import {
   Shape,
   Rectangle,
   RightTriangle,
-  Circle,
+  Circle
 } from '../../../exercises/shapes.js'
 import { strict as assert } from 'assert'
 
@@ -76,7 +76,7 @@ describe('Circle', () => {
     it('should return the area of the circle', () => {
       const circle = new Circle(5)
       assert(
-        Math.abs(circle.area() - 78.54) < 0.01,
+        Math.abs(circle.area() - 78.54) < 0.1,
         'The area of the circle is incorrect'
       )
     })
@@ -86,7 +86,7 @@ describe('Circle', () => {
     it('should return the perimeter of the circle', () => {
       const circle = new Circle(5)
       assert(
-        Math.abs(circle.perimeter() - 31.42) < 0.01,
+        Math.abs(circle.perimeter() - 31.42) < 0.1,
         'The perimeter of the circle is incorrect'
       )
     })

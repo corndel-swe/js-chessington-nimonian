@@ -4,4 +4,8 @@ export class Maths {
   static max(a, b) {
     return a > b ? a : b
   }
+
+  static abs(a) {
+    return a > 0 ? a : -a
+  }
 }
