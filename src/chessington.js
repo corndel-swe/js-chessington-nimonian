@@ -12,6 +12,8 @@ import Square from './models/square.js'
 let boardUI
 let board
 
+const POSTGRES_URL = 'postgres://fakeuser:fakepassword@fakehost:5432/fakedb'
+
 function squareToPositionString(square) {
   const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
   return letters[square.col] + (square.row + 1).toString()
