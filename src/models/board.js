@@ -16,6 +16,18 @@ export default class Board {
     return board
   }
 
+  contains(square) {
+    if (square.row < 0 || square.row >= this.board.length) {
+      return false
+    }
+
+    if (square.col < 0 || square.col >= this.board[0].length) {
+      return false
+    }
+
+    return true
+  }
+
   setPiece(square, piece) {
     this.board[square.row][square.col] = piece
   }
@@ -28,7 +40,7 @@ export default class Board {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[row].length; col++) {
         if (this.board[row][col] === pieceToFind) {
-          return Square.at(row, col)
+          return new Square(row, col)
         }
       }
     }
